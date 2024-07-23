@@ -89,24 +89,43 @@ class Stage {
   // 场景
   createScene() {
     const scene = (this.scene = new THREE.Scene());
-    // scene.background = new THREE.Color(0xfda049);
-    const arr = [
-      "./textures/parkM3/px.jpg",
-      "./textures/parkM3/nx.jpg",
-      "./textures/parkM3/py.jpg",
-      "./textures/parkM3/ny.jpg",
-      "./textures/parkM3/pz.jpg",
-      "./textures/parkM3/nz.jpg",
-    ];
-    for (let i = 0; i < 6; i++) {
-      arr[i] = require(`${arr[i]}`);
-      console.log(arr[i]);
-    }
+    // scene.background = new THREE.Color(0xcb1b45);
+    scene.background = new THREE.Color(0xe8e8e8);
+    // const arr = [
+    //   "./textures/parkM3/px.jpg",
+    //   "./textures/parkM3/nx.jpg",
+    //   "./textures/parkM3/py.jpg",
+    //   "./textures/parkM3/ny.jpg",
+    //   "./textures/parkM3/pz.jpg",
+    //   "./textures/parkM3/nz.jpg",
+    // ];
+    // for (let i = 0; i < 6; i++) {
+    //   arr[i] = require(`${arr[i]}`);
+    //   console.log(arr[i]);
+    // }
 
-    console.log("after------------", arr);
-    const scenetexture = new THREE.CubeTextureLoader().load(arr);
-    scenetexture.mapping = THREE.CubeRefractionMapping;
-    scene.background = scenetexture;
+    // console.log("after------------", arr);
+    // const scenetexture = new THREE.CubeTextureLoader().load(arr);
+    // scenetexture.mapping = THREE.CubeRefractionMapping;
+    // scene.background = scenetexture;
+
+    // const r = "./textures/park/";
+    // const urls = [
+    //   r + "px.jpg",
+    //   r + "nx.jpg",
+    //   r + "py.jpg",
+    //   r + "ny.jpg",
+    //   r + "pz.jpg",
+    //   r + "nz.jpg",
+    // ];
+
+    // const textureCube = new THREE.CubeTextureLoader().load(urls);
+
+    // scene.background = textureCube;
+
+    //
+    // const loader = new THREE.TextureLoader();
+    // scene.background = loader.load(require("./textures/parkM3/nx.jpg"));
 
     if (this.axesHelper) {
       scene.add(new THREE.AxesHelper(10e3));

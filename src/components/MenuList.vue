@@ -7,25 +7,25 @@
       <router-link to="/">首页</router-link>
     </li>
 
-    <template v-for="route in withMenuViewRoutes">
-      <li :key="route.name">
-        <router-link :to="route.path">{{route.meta.title}}</router-link>
+    <template>
+      <li v-for="route in withMenuViewRoutes" :key="route.name">
+        <router-link :to="route.path">{{ route.meta.title }}</router-link>
       </li>
     </template>
   </ul>
 </template>
 
 <script>
-import { withMenuViewRoutes } from '@/router'
+import { withMenuViewRoutes } from "@/router";
 
 export default {
-  name: 'menu-list',
-  data () {
+  name: "menu-list",
+  data() {
     return {
-      withMenuViewRoutes
-    }
-  }
-}
+      withMenuViewRoutes,
+    };
+  },
+};
 </script>
 
 <style lang="less" scoped>

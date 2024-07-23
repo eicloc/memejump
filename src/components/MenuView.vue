@@ -4,7 +4,7 @@
 
     <transition name="menu-view-slide">
       <div v-show="open" class="menu-view-list">
-        <MenuList/>
+        <MenuList />
       </div>
     </transition>
 
@@ -17,24 +17,24 @@
 </template>
 
 <script>
-import MenuList from './MenuList'
+import MenuList from "./MenuList";
 
 export default {
-  name: 'menu-view',
+  name: "menu-view",
   components: {
-    MenuList
+    MenuList,
   },
-  data () {
+  data() {
     return {
-      open: false
-    }
+      open: false,
+    };
   },
   watch: {
-    '$route.path' () {
-      this.open = false
-    }
-  }
-}
+    "$route.path"() {
+      this.open = false;
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -47,7 +47,7 @@ export default {
     left: 0;
     height: 100%;
     width: 220px;
-    box-shadow: 0 0 15px #808B96;
+    box-shadow: 0 0 15px #808b96;
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -73,7 +73,7 @@ export default {
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      box-shadow: 0 0 15px #808B96;
+      box-shadow: 0 0 15px #808b96;
       border: none;
       background: fade(#2c3e50, 50%);
     }
@@ -87,37 +87,37 @@ export default {
 }
 
 .menu-view-trigger-slide-enter-active {
-  animation: slide-bottom .3s;
+  animation: slide-bottom 0.3s;
 }
 .menu-view-trigger-slide-leave-active {
-  animation: slide-top .3s .3s;
+  animation: slide-top 0.3s 0.3s;
 }
 
 .menu-view-slide-enter-active {
-  animation: slide-right .3s;
+  animation: slide-right 0.3s;
 }
 .menu-view-slide-leave-active {
-  animation: slide-left .3s;
+  animation: slide-left 0.3s;
 }
 
 @keyframes slide-right {
   from {
-    transform: translate3d(-100%, 0, 0)
+    transform: translate3d(-100%, 0, 0);
   }
 }
 @keyframes slide-left {
   to {
-    transform: translate3d(-100%, 0, 0)
+    transform: translate3d(-100%, 0, 0);
   }
 }
 @keyframes slide-bottom {
   from {
-    transform: translate3d(0, -200%, 0)
+    transform: translate3d(0, -200%, 0);
   }
 }
 @keyframes slide-top {
   to {
-    transform: translate3d(0, -200%, 0)
+    transform: translate3d(0, -200%, 0);
   }
 }
 </style>
