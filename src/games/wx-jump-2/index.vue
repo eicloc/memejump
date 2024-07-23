@@ -2,7 +2,7 @@
   <div class="jump-world">
     <span class="score-text">Score: 99</span>
     <canvas id="jump-world-canvas"></canvas>
-    <button class="game-button">Start Jumping</button>
+    <!-- <button class="game-button">Start Jumping</button> -->
   </div>
 </template>
 
@@ -101,10 +101,10 @@ export default {
       -2px -2px 1px #0066a2, 0px 2px 1px #0066a2, 0px -2px 1px #0066a2,
       0px 4px 1px #004a87, 2px 4px 1px #004a87, -2px 4px 1px #004a87;
     font-family: "Carter One", sans-serif;
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-weight: bolder;
-    top: 2rem;
-    left: 2rem;
+    top: 1.7rem;
+    left: 1.7rem;
   }
 
   .jump-world {

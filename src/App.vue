@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view name="MenuView" />
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -9,13 +9,14 @@
 * {
   box-sizing: border-box;
 }
-html, body {
+html,
+body {
   width: 100%;
 }
 
 #app {
   width: 100%;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
