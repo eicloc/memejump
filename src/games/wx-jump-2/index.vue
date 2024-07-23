@@ -1,6 +1,7 @@
 <template>
   <div class="jump-world">
     <span v-show="!isOver" class="score-text">Score: {{ score }}</span>
+    <!-- 游戏 -->
     <canvas id="jump-world-canvas"></canvas>
 
     <!-- 游戏失败画面 -->
