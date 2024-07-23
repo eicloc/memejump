@@ -10,6 +10,8 @@ class JumpGameWorld {
     canvas,
     needDefaultCreator = true,
     axesHelper = false,
+    addScore,
+    setGameOver,
   }) {
     const { offsetWidth, offsetHeight } = container;
     this.G = 9.8;
@@ -19,6 +21,12 @@ class JumpGameWorld {
     this.height = offsetHeight;
     this.needDefaultCreator = needDefaultCreator;
     this.axesHelper = axesHelper;
+    //加分
+    this.addScore = addScore;
+    //结束游戏
+    this.setGameOver = setGameOver;
+    //摧毁游戏
+    this.destroyGame = this.destroy;
 
     const [min, max] = [~~(offsetWidth / 6), ~~(offsetWidth / 3.5)];
     this.propSizeRange = [min, max];
@@ -58,11 +66,14 @@ class JumpGameWorld {
 
   // 游戏销毁
   destroy() {
+    console.log("执行world销毁程序");
     this.clear();
   }
 
   // 让游戏回到初始状态
   clear() {
+    console.log("执行stage销毁程序");
+    console.log(this.stage);
     this.stage && this.stage.reset();
 
     this.props.forEach((prop) => prop.destroy());
@@ -71,6 +82,9 @@ class JumpGameWorld {
 
     this.littleMans.forEach((littleMan) => littleMan.destroy());
     this.littleMans = [];
+
+    //销毁游戏后
+    this.init();
   }
 
   // 初始化舞台
@@ -125,11 +139,13 @@ class JumpGameWorld {
 
   // 初始化小人
   initLittleMan() {
-    const { stage, propHeight, G, props } = this;
+    const { stage, propHeight, G, props, addScore, setGameOver } = this;
     const littleMan = new LittleMan({
       world: this,
       color: 0xff9eae,
       G,
+      addScore,
+      setGameOver,
     });
     littleMan.enterStage(stage, { x: 0, y: propHeight + 80, z: 0 }, props[0]);
     littleMan.jump();

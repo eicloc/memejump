@@ -62,9 +62,9 @@ export const actives = [
     geometry.scale(Math.ceil(size / 2), propHeight, Math.ceil(size / 2));
 
     //crypto logos
-    var texture = new THREE.TextureLoader().load(
-      require("./textures/bitcoin.png")
-    );
+    // var texture = new THREE.TextureLoader().load(
+    //   require("./textures/bitcoin.png")
+    // );
 
     const material = baseMeshLambertMaterial.clone();
     material.setValues({ color: colorObj.color });

@@ -65,6 +65,7 @@ class Stage {
 
   // 重置场景到初始状态
   reset() {
+    console.log("stage重置");
     const {
       plane,
       light,

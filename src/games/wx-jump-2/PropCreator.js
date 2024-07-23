@@ -1,36 +1,33 @@
-import * as THREE from 'three'
+import * as THREE from "three";
 import {
   baseMeshLambertMaterial,
   baseBoxBufferGeometry,
   baseCylinderBufferGeometry,
   randomArrayElm,
-  rangeNumberInclusive
-} from './utils'
-import { statics, actives } from './defaultProp'
+  // rangeNumberInclusive
+} from "./utils";
+import { statics, actives } from "./defaultProp";
 
 class PropCreator {
-  constructor ({
-    propHeight,
-    propSizeRange,
-    needDefaultCreator
-  }) {
-    this.propHeight = propHeight
-    this.propSizeRange = propSizeRange
+  constructor({ propHeight, propSizeRange, needDefaultCreator }) {
+    this.propHeight = propHeight;
+    this.propSizeRange = propSizeRange;
 
     // 维护的创造器
-    this.propCreators = []
+    this.propCreators = [];
 
     if (needDefaultCreator) {
-      this.createPropCreator(actives, false)
-      this.createPropCreator(statics, true)
+      this.createPropCreator(actives, false);
+      this.createPropCreator(statics, true);
     }
   }
 
-  createProp (index) {
-    const { propCreators } = this
+  createProp(index) {
+    const { propCreators } = this;
     return index > -1
-      ? propCreators[index] && propCreators[index]() || randomArrayElm(propCreators)()
-      : randomArrayElm(propCreators)()
+      ? (propCreators[index] && propCreators[index]()) ||
+          randomArrayElm(propCreators)()
+      : randomArrayElm(propCreators)();
   }
 
   /**
@@ -38,41 +35,41 @@ class PropCreator {
    * @param {Function} creator 创造器函数
    * @param {Boolean} isStatic 是否是动态创建
    */
-  createPropCreator (creator, isStatic) {
+  createPropCreator(creator, isStatic) {
     if (Array.isArray(creator)) {
-      creator.forEach(crt => this.createPropCreator(crt, isStatic))
-      return
+      creator.forEach((crt) => this.createPropCreator(crt, isStatic));
+      return;
     }
 
-    const { propCreators, propSizeRange, propHeight } = this
+    const { propCreators, propSizeRange, propHeight } = this;
 
     if (propCreators.indexOf(creator) > -1) {
-      return
+      return;
     }
 
     const wrappedCreator = function () {
       if (isStatic && wrappedCreator.box) {
         // 静态盒子，下次直接clone
-        return wrappedCreator.box.clone()
+        return wrappedCreator.box.clone();
       } else {
         const box = creator(THREE, {
           propSizeRange,
           propHeight,
           baseMeshLambertMaterial,
           baseBoxBufferGeometry,
-          baseCylinderBufferGeometry
-        })
+          baseCylinderBufferGeometry,
+        });
 
         if (isStatic) {
           // 被告知是静态盒子，缓存起来
-          wrappedCreator.box = box
+          wrappedCreator.box = box;
         }
-        return box
+        return box;
       }
-    }
+    };
 
-    propCreators.push(wrappedCreator)
+    propCreators.push(wrappedCreator);
   }
 }
 
-export default PropCreator
+export default PropCreator;
