@@ -7,9 +7,6 @@ export let propCounter = 0;
 export const incrementPropCounter = () => propCounter++;
 export const resetPropCounter = () => (propCounter = 0);
 
-// export const colors = [
-//   0x67c23a, 0xe6a23c, 0xf56c6c, 0x909399, 0x409eff, 0xffffff,
-// ];
 export const colors = [
   {
     path: "./textures/bitcoin.png",
